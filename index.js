@@ -1,15 +1,13 @@
-// TODO: Include packages needed for this application
 const inquirer = require("inquirer");
 const fs = require("fs");
 const generateMarkdown = require("./utils/generateMarkdown");
 
-// TODO: Create an array of questions for user input
 const questions = [
         //title
         {
             type: "input",
             name: "title",
-            message: "[1/8] Give your README a title.",
+            message: "Give your README a title.",
             validate: titleInput => {
                 if (titleInput) {
                     return true;
@@ -23,7 +21,7 @@ const questions = [
         {
             type: "input",
             name: "description",
-            message: "[2/8] What should your README's description say?",
+            message: "What should your README's description say?",
             validate: descriptionInput => {
                 if (descriptionInput) {
                     return true;
@@ -33,30 +31,16 @@ const questions = [
                 }
             }
         },
-        //toc
-        // {
-        //     type: "input",
-        //     name: "toc",
-        //     message: "[3/9] What is your Table of Contents?",
-        //     validate: tocInput => {
-        //         if (tocInput) {
-        //             return true;
-        //         } else {
-        //             console.log("Please enter a description.");
-        //             return false;
-        //         }
-        //     }
-        // },
         //install
         {
             type: "input",
             name: "install",
-            message: "[3/8] Install?",
+            message: "What are your installation instructions?",
             validate: installInput => {
                 if (installInput) {
                     return true;
                 } else {
-                    console.log("Please enter a description.");
+                    console.log("Please enter instructions.");
                     return false;
                 }
             }
@@ -65,40 +49,33 @@ const questions = [
         {
             type: "input",
             name: "usage",
-            message: "[4/8] Usage?",
+            message: "Describe your project's usage?",
             validate: usageInput => {
                 if (usageInput) {
                     return true;
                 } else {
-                    console.log("Please enter a description.");
+                    console.log("Please enter usage data.");
                     return false;
                 }
             }
         },
         //license
         {
-            type: "input",
+            type: "list",
             name: "license",
-            message: "[5/8] License?",
-            validate: licenseInput => {
-                if (licenseInput) {
-                    return true;
-                } else {
-                    console.log("Please enter a description.");
-                    return false;
-                }
-            }
+            message: "Which license should apply?",
+            choices: ["MIT", "Apache", "GPL", "BSD", "None"]
         },
         //contributions
         {
             type: "input",
             name: "contributions",
-            message: "[6/8] Contributions?",
+            message: "How can users contribute to your project?",
             validate: contributionInput => {
                 if (contributionInput) {
                     return true;
                 } else {
-                    console.log("Please enter a description.");
+                    console.log("Please enter your contribution guidelines.");
                     return false;
                 }
             }
@@ -107,7 +84,7 @@ const questions = [
         {
             type: "input",
             name: "tests",
-            message: "[7/8] Tests?",
+            message: "How do users run tests?",
             validate: testsInput => {
                 if (testsInput) {
                     return true;
@@ -120,30 +97,41 @@ const questions = [
         //questions
         {
             type: "input",
-            name: "questions",
-            message: "[8/8] Questions?",
-            validate: questionsInput => {
-                if (questionsInput) {
+            name: "email",
+            message: "If users have questions, what e-mail address can they use to contact you?",
+            validate: emailInput => {
+                if (emailInput) {
                     return true;
                 } else {
-                    console.log("Please enter a description.");
+                    console.log("Please enter an e-mail address.");
+                    return false;
+                }
+            }
+        },
+        {
+            type: "input",
+            name: "githubusername",
+            message: "What is your GitHub username?",
+            validate: githubInput => {
+                if (githubInput) {
+                    return true;
+                } else {
+                    console.log("Please enter your username.");
                     return false;
                 }
             }
         },
     ];
-
-// TODO: Create a function to write README file
+// logic to write to file
 function writeToFile(data) {
-    fs.writeFile("./temp/output.md", data, (err) => {
-        if (err) {
-            console.log(err);
+    fs.writeFile("./dist/output.md", data, error => {
+        if (error) {
+            console.log(error);
             return;
         }
     })
 }
-
-// TODO: Create a function to initialize app
+//bring in the questions array
 function init() {
     return inquirer.prompt(questions);
     };
