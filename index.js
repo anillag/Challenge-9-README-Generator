@@ -9,7 +9,7 @@ const questions = [
         {
             type: "input",
             name: "title",
-            message: "[1/9] Give your README a title.",
+            message: "[1/8] Give your README a title.",
             validate: titleInput => {
                 if (titleInput) {
                     return true;
@@ -23,7 +23,7 @@ const questions = [
         {
             type: "input",
             name: "description",
-            message: "[2/9] What should your README's description say?",
+            message: "[2/8] What should your README's description say?",
             validate: descriptionInput => {
                 if (descriptionInput) {
                     return true;
@@ -34,24 +34,24 @@ const questions = [
             }
         },
         //toc
-        {
-            type: "input",
-            name: "toc",
-            message: "[3/9] What is your Table of Contents?",
-            validate: tocInput => {
-                if (tocInput) {
-                    return true;
-                } else {
-                    console.log("Please enter a description.");
-                    return false;
-                }
-            }
-        },
+        // {
+        //     type: "input",
+        //     name: "toc",
+        //     message: "[3/9] What is your Table of Contents?",
+        //     validate: tocInput => {
+        //         if (tocInput) {
+        //             return true;
+        //         } else {
+        //             console.log("Please enter a description.");
+        //             return false;
+        //         }
+        //     }
+        // },
         //install
         {
             type: "input",
             name: "install",
-            message: "[4/9] Install?",
+            message: "[3/8] Install?",
             validate: installInput => {
                 if (installInput) {
                     return true;
@@ -65,7 +65,7 @@ const questions = [
         {
             type: "input",
             name: "usage",
-            message: "[5/9] Usage?",
+            message: "[4/8] Usage?",
             validate: usageInput => {
                 if (usageInput) {
                     return true;
@@ -79,7 +79,7 @@ const questions = [
         {
             type: "input",
             name: "license",
-            message: "[6/9] License?",
+            message: "[5/8] License?",
             validate: licenseInput => {
                 if (licenseInput) {
                     return true;
@@ -93,7 +93,7 @@ const questions = [
         {
             type: "input",
             name: "contributions",
-            message: "[7/9] Contributions?",
+            message: "[6/8] Contributions?",
             validate: contributionInput => {
                 if (contributionInput) {
                     return true;
@@ -107,7 +107,7 @@ const questions = [
         {
             type: "input",
             name: "tests",
-            message: "[8/9] Tests?",
+            message: "[7/8] Tests?",
             validate: testsInput => {
                 if (testsInput) {
                     return true;
@@ -121,7 +121,7 @@ const questions = [
         {
             type: "input",
             name: "questions",
-            message: "[9/9] Questions?",
+            message: "[8/8] Questions?",
             validate: questionsInput => {
                 if (questionsInput) {
                     return true;
