@@ -2,8 +2,9 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 const generateMarkdown = require("./utils/generateMarkdown");
 
+// Questions for collecting user input
 const questions = [
-        //title
+        // Title
         {
             type: "input",
             name: "title",
@@ -17,7 +18,7 @@ const questions = [
                 }
             }
         },
-        //description
+        // Description
         {
             type: "input",
             name: "description",
@@ -31,7 +32,7 @@ const questions = [
                 }
             }
         },
-        //install
+        // Install
         {
             type: "input",
             name: "install",
@@ -45,7 +46,7 @@ const questions = [
                 }
             }
         },
-        //usage
+        // Usage
         {
             type: "input",
             name: "usage",
@@ -59,14 +60,14 @@ const questions = [
                 }
             }
         },
-        //license
+        // License
         {
             type: "list",
             name: "license",
             message: "Which license should apply?",
             choices: ["MIT", "Apache", "GPL", "BSD", "None"]
         },
-        //contributions
+        // Contributions
         {
             type: "input",
             name: "contributions",
@@ -80,7 +81,7 @@ const questions = [
                 }
             }
         },
-        //tests
+        // Tests
         {
             type: "input",
             name: "tests",
@@ -94,7 +95,7 @@ const questions = [
                 }
             }
         },
-        //questions
+        // Questions, E-mail
         {
             type: "input",
             name: "email",
@@ -108,6 +109,7 @@ const questions = [
                 }
             }
         },
+        // Questions, GitHub username
         {
             type: "input",
             name: "githubusername",
@@ -122,7 +124,7 @@ const questions = [
             }
         },
     ];
-// logic to write to file
+// Logic to write to file
 function writeToFile(data) {
     fs.writeFile("./dist/output.md", data, error => {
         if (error) {
@@ -131,12 +133,12 @@ function writeToFile(data) {
         }
     })
 }
-//bring in the questions array
+// Bring in the questions array to Inquirer
 function init() {
     return inquirer.prompt(questions);
     };
 
-// Function call to initialize app
+// Function call to initialize
 init()
     .then((data) => {
         let markdown = generateMarkdown(data);

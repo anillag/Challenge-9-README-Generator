@@ -5,7 +5,7 @@ function renderLicenseBadge(license) {
   } return `![License](https://img.shields.io/badge/License-${license}-success)`;
 }
 
-// Creates TOC link, or leaves it blank
+// Creates TOC link for license, or leaves it blank
 function renderLicenseLink(license) {
   if (license === "None") {
     return "";
@@ -23,7 +23,7 @@ function renderLicenseSection(license) {
   `
 }
 
-// Creates markdown for README.md
+// Creates dynamically generated markdown for README.md
 function generateMarkdown(data) {
   return `# ${data.title}
 ${renderLicenseBadge(data.license)}
